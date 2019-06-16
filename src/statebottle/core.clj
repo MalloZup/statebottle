@@ -6,13 +6,11 @@
             [langohr.consumers :as lc]
             [langohr.basic     :as lb]))
 
-(def ^{:const true}
-  default-exchange-name "")
+(def default-exchange-name "")
 
 (defn message-handler
   [ch {:keys [content-type delivery-tag type] :as meta} ^bytes payload]
-  (println (format "[consumer] Received a message: %s, delivery tag: %d, content type: %s, type: %s"
-                   (String. payload "UTF-8") delivery-tag content-type type)))
+  (println (format "[consumer] Received a message: %s, delivery tag: %d, content type: %s, type: %s" (String. payload "UTF-8") delivery-tag content-type type)))
 
 (defn -main
   [& args]
